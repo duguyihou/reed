@@ -1,19 +1,23 @@
 import ky, {Options} from 'ky';
 import configService from '../../../config';
+import {Buffer} from 'buffer';
 
+type TokenType = 'Bearer';
+type AccessToken = {
+  access_token: string;
+  token_type: TokenType;
+  expires_in: number;
+};
 export const getAccessToken = () => {
   const {baseUrl, clientId, clientSecret} = configService;
+  const credentials = Buffer.from(`${clientId}:${clientSecret}`);
   const options: Options = {
-    json: {
-      grant_type: 'client_credentials',
-      client_id: clientId,
-      client_secret: clientSecret,
-    },
+    body: 'grant_type=client_credentials',
     headers: {
-      'content-type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${credentials.toString('base64')}`,
     },
   };
-  console.log('🐵 options ------ ', options);
-  const result = ky.post(`${baseUrl}/api/token`, options).json();
+  const result = ky.post(`${baseUrl}/api/token`, options).json<AccessToken>();
   return result;
 };

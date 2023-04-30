@@ -3,8 +3,8 @@ import React from 'react';
 import {useAccessToken} from '../features/auth/hooks';
 
 const Home = () => {
-  const a = useAccessToken();
-  console.log('🐵  ------ ', a.error);
+  const {data} = useAccessToken();
+  console.log('🐵 data ------ ', data);
   return (
     <View>
       <Text>Home</Text>
