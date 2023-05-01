@@ -1,6 +1,6 @@
 import {Text, View} from 'react-native';
 import React from 'react';
-import {useAccessToken} from '../features/auth/hooks';
+import {useAccessToken} from '../features/auth';
 
 const Home = () => {
   const {data} = useAccessToken();

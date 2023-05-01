@@ -1,4 +1,3 @@
-import ky, {Options} from 'ky';
 import configService from '../../../config';
 import {Buffer} from 'buffer';
 
@@ -8,16 +7,19 @@ type AccessToken = {
   token_type: TokenType;
   expires_in: number;
 };
-export const getAccessToken = () => {
-  const {baseUrl, clientId, clientSecret} = configService;
+
+export const getAccessToken = async () => {
+  const {authUrl, clientId, clientSecret} = configService;
   const credentials = Buffer.from(`${clientId}:${clientSecret}`);
-  const options: Options = {
-    body: 'grant_type=client_credentials',
+
+  const response = await fetch(`${authUrl}`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: `Basic ${credentials.toString('base64')}`,
     },
-  };
-  const result = ky.post(`${baseUrl}/api/token`, options).json<AccessToken>();
-  return result;
+    body: 'grant_type=client_credentials',
+  });
+  const {access_token} = (await response.json()) as AccessToken;
+  return access_token;
 };

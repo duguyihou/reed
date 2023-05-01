@@ -1,5 +1,5 @@
 import {useQuery} from '@tanstack/react-query';
-import {getAccessToken} from '../apis/getAccessToken';
+import {getAccessToken} from '../apis/auth';
 
 const useAccessToken = () => {
   const res = useQuery({
