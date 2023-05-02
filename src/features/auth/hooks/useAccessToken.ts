@@ -1,12 +1,13 @@
 import {useQuery} from '@tanstack/react-query';
-import {getAccessToken} from '../apis/auth';
+import {getAccessToken} from '../apis';
+import authService from '../utils';
 
 const useAccessToken = () => {
-  const res = useQuery({
+  const result = useQuery<string, Error>({
     queryKey: ['access token'],
     queryFn: async () => await getAccessToken(),
   });
-  return res;
+  authService.setToken(result.data);
 };
 
 export default useAccessToken;

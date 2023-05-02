@@ -1,8 +1,9 @@
-import configService from '../../../config';
+import configService from '../../../configuration';
 import {Buffer} from 'buffer';
 
 type TokenType = 'Bearer';
-type AccessToken = {
+
+export type AccessToken = {
   access_token: string;
   token_type: TokenType;
   expires_in: number;

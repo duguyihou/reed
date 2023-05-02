@@ -1,9 +1,9 @@
 import {Text, View} from 'react-native';
 import React from 'react';
-import {useAccessToken} from '../features/auth';
+import {useAlbumQuery} from '../features/albums';
 
 const Home = () => {
-  const {data} = useAccessToken();
+  const {data} = useAlbumQuery('4aawyAB9vmqN3uQ7FjRGTy');
   console.log('🐵 data ------ ', data);
   return (
     <View>

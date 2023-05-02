@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const getToken = async () => {
+const getToken = async () => {
   try {
     const token = await AsyncStorage.getItem('token');
     return token;
@@ -8,9 +8,8 @@ export const getToken = async () => {
     console.error('get token failed');
   }
 };
-export const setToken = async (value: string | null) => {
+const setToken = async (value: string | undefined) => {
   try {
-    console.log('🐵 setoken ------ value', value);
     value
       ? await AsyncStorage.setItem('token', value)
       : await AsyncStorage.removeItem('token');
@@ -18,3 +17,9 @@ export const setToken = async (value: string | null) => {
     console.error('set token failed');
   }
 };
+const authService = {
+  setToken,
+  getToken,
+};
+
+export default authService;
