@@ -8,6 +8,10 @@ export type HomeStackParamList = {
   Home: undefined;
 };
 
+export type SearchStackParamList = {
+  Search: undefined;
+};
+
 export type HomeStackProps = NativeStackScreenProps<HomeStackParamList>;
 export type HomeStackNavigationProps =
   NativeStackNavigationProp<HomeStackParamList>;

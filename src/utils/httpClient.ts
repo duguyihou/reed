@@ -17,6 +17,7 @@ export const handleError = async (err: unknown) => {
       case 401:
         console.log('🐵 401 ------ ', 401);
         const newToken = await getAccessToken();
+        console.log('🐵 newToken ------401', newToken);
         await authService.setToken(newToken);
         break;
       case 500:

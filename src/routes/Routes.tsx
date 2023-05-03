@@ -5,9 +5,15 @@ import React from 'react';
 import Home from 'screens/Home';
 import Search from 'screens/Search';
 
-import {HomeStackParamList, RouteName} from './Routes.types';
+import {
+  HomeStackParamList,
+  RouteName,
+  SearchStackParamList,
+} from './Routes.types';
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+const SearchStack = createNativeStackNavigator<SearchStackParamList>();
+
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
@@ -15,6 +21,15 @@ function HomeStackScreen() {
         <HomeStack.Screen name={RouteName.Home} component={Home} />
       </HomeStack.Group>
     </HomeStack.Navigator>
+  );
+}
+function SearchStackScreen() {
+  return (
+    <SearchStack.Navigator>
+      <SearchStack.Group>
+        <SearchStack.Screen name={RouteName.Search} component={Search} />
+      </SearchStack.Group>
+    </SearchStack.Navigator>
   );
 }
 const RootTab = createBottomTabNavigator();
@@ -29,7 +44,7 @@ const Routes = () => {
         />
         <RootTab.Screen
           name={RouteName.Search}
-          component={Search}
+          component={SearchStackScreen}
           options={{title: RouteName.Search}}
         />
       </RootTab.Navigator>
