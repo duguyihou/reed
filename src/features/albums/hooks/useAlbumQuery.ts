@@ -1,5 +1,5 @@
 import {useQuery} from '@tanstack/react-query';
-import getAlbum from '../apis/getAlbum';
+import {getAlbum} from '../apis';
 
 const useAlbumQuery = (id: string) => {
   const result = useQuery({

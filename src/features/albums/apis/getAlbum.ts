@@ -13,6 +13,7 @@ const getAlbum = async (id: string): Promise<Album | undefined> => {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log('🐵 getAlbum ------ token', token);
     const album = await response.json();
     return album;
   } catch (error) {

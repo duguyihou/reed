@@ -1,8 +1,12 @@
 import configService from '../../../configuration';
 import {handleError, httpClient} from '../../../utils';
 import authService from '../../auth/utils';
+import {Album} from '../types';
 
-const getSeveralAlbums = async (ids: string) => {
+type Data = {
+  albums: Album[];
+};
+const getSeveralAlbums = async (ids: string): Promise<Data | undefined> => {
   const {baseUrl} = configService;
   const token = await authService.getToken();
   try {
