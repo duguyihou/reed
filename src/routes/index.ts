@@ -5,4 +5,5 @@ export type {
   HomeStackNavigationProps,
   HomeRouteType,
   RouteName,
+  SearchStackParamList,
 } from './Routes.types';
