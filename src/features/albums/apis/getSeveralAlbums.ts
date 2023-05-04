@@ -3,17 +3,20 @@ import {handleError, httpClient} from '../../../utils';
 import authService from '../../auth/utils';
 import {Album} from '../types';
 
-const getAlbum = async (id: string): Promise<Album | undefined> => {
+type Data = {
+  albums: Album[];
+};
+const getSeveralAlbums = async (ids: string): Promise<Data | undefined> => {
   const {baseUrl} = configService;
   const token = await authService.getToken();
   try {
-    const response = await httpClient(`${baseUrl}/v1/albums/${id}`, {
+    const params = new URLSearchParams({ids});
+    const response = await httpClient(`${baseUrl}/v1/albums?${params}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log('🐵 getAlbum ------ token', token);
     const album = await response.json();
     return album;
   } catch (error) {
@@ -21,4 +24,4 @@ const getAlbum = async (id: string): Promise<Album | undefined> => {
   }
 };
 
-export default getAlbum;
+export default getSeveralAlbums;
