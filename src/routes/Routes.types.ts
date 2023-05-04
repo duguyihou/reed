@@ -23,6 +23,7 @@ export type HomeRouteType<K extends keyof HomeStackParamList> = RouteProp<
 
 export enum RouteName {
   HomeStack = 'HomeStack',
+  SearchStack = 'SearchStack',
   Home = 'Home',
   Search = 'Search',
 }
