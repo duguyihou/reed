@@ -43,7 +43,7 @@ const Routes = () => {
           options={{title: RouteName.Home}}
         />
         <RootTab.Screen
-          name={RouteName.Search}
+          name={RouteName.SearchStack}
           component={SearchStackScreen}
           options={{title: RouteName.Search}}
         />
