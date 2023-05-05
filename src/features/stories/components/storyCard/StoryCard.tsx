@@ -5,22 +5,17 @@ import {theme} from '../../../../shared/theme';
 import FastImage from 'react-native-fast-image';
 
 const StoryCard = (props: StoryCardProps) => {
-  const {name: albumName, release_date, images, artists} = props;
-  const artistName = artists ? artists[0].name : '';
-  const releaseDate = release_date.slice(0, 4);
+  const {title, multimedia} = props;
   return (
     <View style={styles.conatiner}>
       <FastImage
         style={styles.image}
-        source={{uri: images[1].url}}
+        source={{uri: multimedia[1].url}}
         resizeMode={FastImage.resizeMode.stretch}
       />
       <Text style={styles.albumName} numberOfLines={1}>
-        {albumName}
+        {title}
       </Text>
-      <Text
-        style={styles.info}
-        numberOfLines={1}>{`${releaseDate} - ${artistName}`}</Text>
     </View>
   );
 };

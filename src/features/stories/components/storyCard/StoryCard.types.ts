@@ -1,3 +1,3 @@
-import {Album} from '../../types';
+import {Article} from '../../types';
 
-export type StoryCardProps = Album;
+export type StoryCardProps = Article;

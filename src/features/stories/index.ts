@@ -1,2 +1,2 @@
-export {useStoryQuery} from './hooks';
+export {useTopStoriesQuery} from './hooks';
 export {StoryCarousel} from './components';

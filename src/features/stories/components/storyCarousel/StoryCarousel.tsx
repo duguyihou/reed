@@ -2,16 +2,13 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {FlashList} from '@shopify/flash-list';
 import {StoryCard} from '../storyCard';
-import useSeveralAlbumsQuery from '../../hooks/useStoriesQuery';
-import {StoryCarouselProps} from './StoryCarousel.types';
-import AlbumCarouselPlaceholder from './StoryCarousel.placeholder';
+import useTopStoriesQuery from '../../hooks/useTopStoriesQuery';
+import StoryCarouselPlaceholder from './StoryCarousel.placeholder';
 
-const AlbumCarousel = (props: StoryCarouselProps) => {
-  const {ids} = props;
-
-  const {data, isLoading} = useSeveralAlbumsQuery(ids);
+const StoryCarousel = () => {
+  const {data, isLoading} = useTopStoriesQuery();
   if (isLoading) {
-    return <AlbumCarouselPlaceholder />;
+    return <StoryCarouselPlaceholder />;
   }
   const handleSeeMore = () => console.log('🐵  ------ ');
   return (
@@ -23,7 +20,7 @@ const AlbumCarousel = (props: StoryCarouselProps) => {
       <FlashList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={data?.albums}
+        data={data?.results}
         renderItem={({item}) => <StoryCard {...item} />}
         estimatedItemSize={150}
       />
@@ -31,7 +28,7 @@ const AlbumCarousel = (props: StoryCarouselProps) => {
   );
 };
 
-export default AlbumCarousel;
+export default StoryCarousel;
 
 const styles = StyleSheet.create({
   container: {},
