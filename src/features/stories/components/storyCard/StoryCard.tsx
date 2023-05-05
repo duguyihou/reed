@@ -1,10 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {AlbumCardProps} from './AlbumCard.types';
+import {StoryCardProps} from './StoryCard.types';
 import {theme} from '../../../../shared/theme';
 import FastImage from 'react-native-fast-image';
 
-const AlbumCard = (props: AlbumCardProps) => {
+const StoryCard = (props: StoryCardProps) => {
   const {name: albumName, release_date, images, artists} = props;
   const artistName = artists ? artists[0].name : '';
   const releaseDate = release_date.slice(0, 4);
@@ -25,7 +25,7 @@ const AlbumCard = (props: AlbumCardProps) => {
   );
 };
 
-export default AlbumCard;
+export default StoryCard;
 
 const styles = StyleSheet.create({
   conatiner: {

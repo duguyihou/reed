@@ -6,7 +6,7 @@ import {Album} from '../types';
 type Data = {
   albums: Album[];
 };
-const getSeveralAlbums = async (ids: string): Promise<Data | undefined> => {
+const getStories = async (ids: string): Promise<Data | undefined> => {
   const {baseUrl} = configService;
   const token = await authService.getToken();
   try {
@@ -24,4 +24,4 @@ const getSeveralAlbums = async (ids: string): Promise<Data | undefined> => {
   }
 };
 
-export default getSeveralAlbums;
+export default getStories;
