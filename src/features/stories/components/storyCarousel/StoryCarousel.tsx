@@ -18,11 +18,9 @@ const StoryCarousel = () => {
         <Button onPress={handleSeeMore} title="See More" />
       </View>
       <FlashList
-        horizontal
-        showsHorizontalScrollIndicator={false}
         data={data?.results}
         renderItem={({item}) => <StoryCard {...item} />}
-        estimatedItemSize={150}
+        estimatedItemSize={75}
       />
     </View>
   );
