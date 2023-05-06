@@ -4,24 +4,29 @@ import {FlashList} from '@shopify/flash-list';
 import {StoryCard} from '../storyCard';
 import useTopStoriesQuery from '../../hooks/useTopStoriesQuery';
 import StoryCarouselPlaceholder from './StoryCarousel.placeholder';
+import {StoryCarouselProps} from './StoryCarousel.types';
+import {theme} from '../../../../shared/theme';
 
-const StoryCarousel = () => {
+const StoryCarousel = (props: StoryCarouselProps) => {
+  const {limit} = props;
   const {data, isLoading} = useTopStoriesQuery();
   if (isLoading) {
     return <StoryCarouselPlaceholder />;
   }
-  const handleSeeMore = () => console.log('🐵  ------ ');
+  const handleSeeMore = () => console.log('🐵  ------ ', data?.results.length);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Top Stories</Text>
-        <Button onPress={handleSeeMore} title="See More" />
       </View>
       <FlashList
-        data={data?.results}
+        data={data?.results.slice(0, limit)}
         renderItem={({item}) => <StoryCard {...item} />}
-        estimatedItemSize={75}
+        estimatedItemSize={300}
       />
+      {limit && (
+        <Button color={theme.red} onPress={handleSeeMore} title="See More" />
+      )}
     </View>
   );
 };
@@ -29,7 +34,9 @@ const StoryCarousel = () => {
 export default StoryCarousel;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    height: '50%',
+  },
   header: {
     height: 40,
     display: 'flex',

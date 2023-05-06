@@ -5,7 +5,7 @@ import {StoryCarousel} from '../features/stories';
 const Home = () => {
   return (
     <Layout headerTitle="Home">
-      <StoryCarousel />
+      <StoryCarousel limit={5} />
     </Layout>
   );
 };

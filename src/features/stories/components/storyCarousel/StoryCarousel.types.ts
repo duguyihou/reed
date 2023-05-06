@@ -1,3 +1,3 @@
 export type StoryCarouselProps = {
-  ids: string;
+  limit?: number;
 };
