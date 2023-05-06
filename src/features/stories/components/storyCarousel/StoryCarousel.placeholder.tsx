@@ -1,7 +1,7 @@
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import React from 'react';
 
-const AlbumCarouselPlaceholder = () => {
+const StoryCarouselPlaceholder = () => {
   return (
     <SkeletonPlaceholder borderRadius={4}>
       <SkeletonPlaceholder.Item flexDirection="row" alignItems="center">
@@ -15,4 +15,4 @@ const AlbumCarouselPlaceholder = () => {
   );
 };
 
-export default AlbumCarouselPlaceholder;
+export default StoryCarouselPlaceholder;

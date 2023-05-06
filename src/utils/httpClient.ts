@@ -1,5 +1,3 @@
-import {getAccessToken, authService} from '../features/auth';
-
 const isPlainObject = (value: unknown) => value?.constructor === Object;
 
 class ResponseError extends Error {
@@ -15,10 +13,6 @@ export const handleError = async (err: unknown) => {
   if (err instanceof ResponseError) {
     switch (err.response.status) {
       case 401:
-        console.log('🐵 401 ------ ', 401);
-        const newToken = await getAccessToken();
-        console.log('🐵 newToken ------401', newToken);
-        await authService.setToken(newToken);
         break;
       case 500:
         break;

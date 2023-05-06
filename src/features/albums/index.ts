@@ -1,1 +1,0 @@
-export {useAlbumQuery} from './hooks';
