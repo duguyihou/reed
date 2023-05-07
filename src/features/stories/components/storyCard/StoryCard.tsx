@@ -1,20 +1,27 @@
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, Pressable} from 'react-native';
 import React from 'react';
 import {StoryCardProps} from './StoryCard.types';
 import {theme} from '../../../../shared/theme';
 import FastImage from 'react-native-fast-image';
+import {useNavigation} from '@react-navigation/native';
+import {HomeStackNavigationProps, RouteName} from '../../../../routes';
 
 const StoryCard = (props: StoryCardProps) => {
-  const {title, multimedia} = props;
+  const {title, multimedia, url} = props;
+  const navigation = useNavigation<HomeStackNavigationProps>();
+
+  const handlePress = () => {
+    navigation.push(RouteName.Article, {url});
+  };
   return (
-    <View style={styles.conatiner}>
+    <Pressable style={styles.conatiner} onPress={handlePress}>
       <FastImage
         style={styles.image}
         source={{uri: multimedia[1].url}}
         resizeMode={FastImage.resizeMode.stretch}
       />
       <Text style={styles.title}>{title}</Text>
-    </View>
+    </Pressable>
   );
 };
 

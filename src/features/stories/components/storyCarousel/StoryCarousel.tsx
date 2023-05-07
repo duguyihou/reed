@@ -27,6 +27,7 @@ const StoryCarousel = (props: StoryCarouselProps) => {
         </View>
       )}
       <FlashList
+        initialScrollIndex={limit ? 0 : 5}
         data={data?.results.slice(0, limit)}
         renderItem={({item}) => <StoryCard {...item} />}
         estimatedItemSize={300}

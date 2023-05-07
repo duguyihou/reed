@@ -11,6 +11,7 @@ import {
   SearchStackParamList,
 } from './Routes.types';
 import TopStories from '../screens/TopStories';
+import Article from '../screens/Article';
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 const SearchStack = createNativeStackNavigator<SearchStackParamList>();
@@ -21,6 +22,7 @@ function HomeStackScreen() {
       <HomeStack.Group>
         <HomeStack.Screen name={RouteName.Home} component={Home} />
         <HomeStack.Screen name={RouteName.TopStories} component={TopStories} />
+        <HomeStack.Screen name={RouteName.Article} component={Article} />
       </HomeStack.Group>
     </HomeStack.Navigator>
   );

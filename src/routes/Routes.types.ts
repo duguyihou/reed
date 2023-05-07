@@ -7,6 +7,7 @@ import {
 export type HomeStackParamList = {
   Home: undefined;
   TopStories: undefined;
+  Article: {url: string};
 };
 
 export type SearchStackParamList = {
@@ -28,4 +29,5 @@ export enum RouteName {
   Home = 'Home',
   TopStories = 'TopStories',
   Search = 'Search',
+  Article = 'Article',
 }

@@ -58,6 +58,9 @@ dependencies:
   react-native-svg:
     specifier: ^13.9.0
     version: 13.9.0(react-native@0.71.7)(react@18.2.0)
+  react-native-webview:
+    specifier: ^12.0.2
+    version: 12.0.2(react-native@0.71.7)(react@18.2.0)
 
 devDependencies:
   '@babel/core':
@@ -7017,6 +7020,18 @@ packages:
       css-tree: 1.1.3
       react: 18.2.0
       react-native: 0.71.7(@babel/core@7.20.2)(@babel/preset-env@7.20.2)(react@18.2.0)
+
+  /react-native-webview@12.0.2(react-native@0.71.7)(react@18.2.0):
+    resolution: {integrity: sha512-vEnFOgVIYaUAQb437BOZdwTteUv3dkXkYOajalUkMDHNz91Zb35HaG6L49uUSFp4qYw46y/U3licKS1BOISDrg==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+    dependencies:
+      escape-string-regexp: 2.0.0
+      invariant: 2.2.4
+      react: 18.2.0
+      react-native: 0.71.7(@babel/core@7.20.2)(@babel/preset-env@7.20.2)(react@18.2.0)
+    dev: false
 
   /react-native@0.71.7(@babel/core@7.20.2)(@babel/preset-env@7.20.2)(react@18.2.0):
     resolution: {integrity: sha512-Id6iRLS581fJMFGbBl1jP5uSmjExtGOvw5Gvh7694zISXjsRAsFMmU+izs0pyCLqDBoHK7y4BT7WGPGw693nYw==}
