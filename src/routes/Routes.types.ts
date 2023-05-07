@@ -6,6 +6,7 @@ import {
 
 export type HomeStackParamList = {
   Home: undefined;
+  TopStories: undefined;
 };
 
 export type SearchStackParamList = {
@@ -25,5 +26,6 @@ export enum RouteName {
   HomeStack = 'HomeStack',
   SearchStack = 'SearchStack',
   Home = 'Home',
+  TopStories = 'TopStories',
   Search = 'Search',
 }
