@@ -1,26 +1,25 @@
 import configService from '../../../configuration';
 import {handleError, httpClient} from '../../../utils';
-import {Article} from '../../../types';
+import {Section} from '../../../types';
 
 type Data = {
   status: string;
   copyright: string;
   section: string;
-  last_updated: string;
   num_results: number;
-  results: Article[];
+  results: Section[];
 };
 
-const getTopStories = async (section: string): Promise<Data | undefined> => {
+const getSectionList = async (): Promise<Data | undefined> => {
   const {baseUrl, apiKey} = configService;
   try {
-    const url = `${baseUrl}/svc/topstories/v2/${section}.json?api-key=${apiKey}`;
+    const url = `${baseUrl}/svc/news/v3/content/section-list.json?api-key=${apiKey}`;
     const response = await httpClient(url);
-    const topStories = await response.json();
-    return topStories;
+    const sectionList = await response.json();
+    return sectionList;
   } catch (error) {
     handleError(error);
   }
 };
 
-export default getTopStories;
+export default getSectionList;

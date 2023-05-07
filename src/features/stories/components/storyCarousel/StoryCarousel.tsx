@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, Dimensions, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {FlashList} from '@shopify/flash-list';
 import {StoryCard} from '../storyCard';
@@ -6,19 +6,26 @@ import useTopStoriesQuery from '../../hooks/useTopStoriesQuery';
 import StoryCarouselPlaceholder from './StoryCarousel.placeholder';
 import {StoryCarouselProps} from './StoryCarousel.types';
 import {theme} from '../../../../shared/theme';
+import {useNavigation} from '@react-navigation/native';
+import {HomeStackNavigationProps, RouteName} from '../../../../routes';
 
 const StoryCarousel = (props: StoryCarouselProps) => {
   const {limit} = props;
+  const navigation = useNavigation<HomeStackNavigationProps>();
   const {data, isLoading} = useTopStoriesQuery();
   if (isLoading) {
     return <StoryCarouselPlaceholder />;
   }
-  const handleSeeMore = () => console.log('🐵  ------ ', data?.results.length);
+  const handleSeeMore = () => {
+    navigation.push(RouteName.TopStories);
+  };
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Top Stories</Text>
-      </View>
+      {limit && (
+        <View style={styles.header}>
+          <Text style={styles.title}>Top Stories</Text>
+        </View>
+      )}
       <FlashList
         data={data?.results.slice(0, limit)}
         renderItem={({item}) => <StoryCard {...item} />}
@@ -35,7 +42,7 @@ export default StoryCarousel;
 
 const styles = StyleSheet.create({
   container: {
-    height: '50%',
+    height: Dimensions.get('screen').height,
   },
   header: {
     height: 40,

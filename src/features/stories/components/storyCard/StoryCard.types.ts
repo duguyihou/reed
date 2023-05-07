@@ -1,3 +1,3 @@
-import {Article} from '../../types';
+import {Article} from '../../../../types';
 
 export type StoryCardProps = Article;
